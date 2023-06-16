@@ -1,11 +1,11 @@
 import { Worker } from "node:worker_threads";
-import { availableParallelism } from "node:os";
+import { cpus } from "node:os";
 import { getPathCurrent } from "../helpers/index.js";
 
 const DEFAULT_NUMBER = 10;
 
 const performCalculations = async () => {
-  const amountCoreHostMachine = availableParallelism();
+  const amountCoreHostMachine = cpus().length;
   const pathWorkerFile = getPathCurrent(import.meta.url, "worker.js");
   const arrPromisesWorker = [];
   for (let i = 0; i < amountCoreHostMachine; i += 1) {
