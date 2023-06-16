@@ -10,9 +10,8 @@ const performCalculations = async () => {
   const arrPromisesWorker = [];
   for (let i = 0; i < amountCoreHostMachine; i += 1) {
     const promiseWorker = new Promise((resolve, reject) => {
-      const paramsWorker = DEFAULT_NUMBER + i;
       const worker = new Worker(pathWorkerFile, {
-        workerData: paramsWorker,
+        workerData: DEFAULT_NUMBER + i,
       });
       worker.on("message", (value) => resolve(value));
       worker.on("messageerror", () => reject(null));
