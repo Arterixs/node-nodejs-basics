@@ -8,9 +8,7 @@ const remove = async () => {
     "fileToRemove.txt"
   );
   try {
-    rm(pathDeleteFile).catch((err) => {
-      triggerErrorFs(err);
-    });
+    rm(pathDeleteFile).catch((err) => triggerErrorFs(err));
   } catch (err) {
     console.error(err);
   }

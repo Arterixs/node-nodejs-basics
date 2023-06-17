@@ -8,9 +8,9 @@ const copy = async () => {
     const files = await readdir(pathOriginMcdir).catch((error) =>
       triggerErrorFs(error)
     );
-    await mkdir(pathCopyMcdir, { recursive: false }).catch((error) => {
-      triggerErrorFs(error);
-    });
+    await mkdir(pathCopyMcdir, { recursive: false }).catch((error) =>
+      triggerErrorFs(error)
+    );
     files.forEach(async (item) => {
       if (item.includes(".")) {
         await copyFile(
