@@ -14,8 +14,8 @@ const performCalculations = async () => {
         workerData: DEFAULT_NUMBER + i,
       });
       worker.on("message", (value) => resolve(value));
-      worker.on("messageerror", () => reject(null));
-      worker.on("error", () => reject(null));
+      worker.on("messageerror", () => reject());
+      worker.on("error", () => reject());
     });
     arrPromisesWorker.push(promiseWorker);
   }
@@ -26,7 +26,7 @@ const performCalculations = async () => {
         if (item.status === "fulfilled") {
           return { status: "resolved", data: item.value };
         }
-        return { status: "error", data: item.value };
+        return { status: "error", data: null };
       });
       return updateResult;
     })
