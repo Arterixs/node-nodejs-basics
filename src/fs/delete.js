@@ -1,14 +1,14 @@
-import { rm } from "node:fs/promises";
-import { getPathCurrent, triggerErrorFs } from "../helpers/index.js";
+import { rm } from 'node:fs/promises';
+import { getPathCurrent, triggerErrorFs } from '../helpers/index.js';
 
 const remove = async () => {
   const pathDeleteFile = getPathCurrent(
     import.meta.url,
-    "files",
-    "fileToRemove.txt"
+    'files',
+    'fileToRemove.txt'
   );
   try {
-    rm(pathDeleteFile).catch((err) => triggerErrorFs(err));
+    await rm(pathDeleteFile).catch((err) => triggerErrorFs(err));
   } catch (err) {
     console.error(err);
   }
